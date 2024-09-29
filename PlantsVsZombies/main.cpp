@@ -8,7 +8,7 @@ using namespace std;
 void createMenuPause(RenderWindow &window) {
 	Image pauseButtonRender;
 	//загружаем файл для карты
-	pauseButtonRender.loadFromFile("кнопкаПауза.png");
+	pauseButtonRender.loadFromFile("Pause.png");
 	Texture texture;
 	texture.loadFromImage(pauseButtonRender);
 	Sprite buttonPause;
@@ -24,7 +24,7 @@ void createMenuPause(RenderWindow &window) {
 void createPoints(RenderWindow &window) {
 	Image pauseButtonRender;
 	//загружаем файл для карты
-	pauseButtonRender.loadFromFile("modelСолнце.png");
+	pauseButtonRender.loadFromFile("Sun.png");
 	Texture texture;
 	texture.loadFromImage(pauseButtonRender);
 	Sprite buttonPause;
@@ -66,7 +66,7 @@ void createHeroCard(RenderWindow &window, std::string path, int number_hero, vec
 	//Рисование карточки
 	Image map_image;
 	//загружаем файл для карты
-	map_image.loadFromFile(path);
+	map_image.loadFromFile(/*"C:\\Users\\Acer\\Desktop\\PlantsVsZombiesSFML\\PlantsVsZombies\\" + */ path);
 	Texture map;
 	map.loadFromImage(map_image);
 	Sprite s_map;
@@ -83,7 +83,7 @@ void createHeroCard(RenderWindow &window, std::string path, int number_hero, vec
 void createBack(RenderWindow &window) {
 	//Рисование фона
 	Image map_image;
-	map_image.loadFromFile("задний фон.jpg");
+	map_image.loadFromFile("Background.jpg");
 	Texture map;
 	map.loadFromImage(map_image);
 	Sprite s_map;
@@ -96,7 +96,7 @@ void createBack(RenderWindow &window) {
 void createMap(RenderWindow &window) {
 	//Рисование карты
 	Image map_image;//объект изображения для карты
-	map_image.loadFromFile("картаЦеликом.png");//загружаем файл для карты
+	map_image.loadFromFile("FullMap.png");//загружаем файл для карты
 	Texture map;
 	map.loadFromImage(map_image);
 	Sprite s_map;
@@ -303,7 +303,7 @@ int main()
 
 		//Создание заднего фона
 		createBack(window);
-		vector <std::string> paths = { "Горошек.png", "Подсолнух.png", "Капуста.png", "Актиния.png", "Бомба.png", "Поу.png" };
+		vector <std::string> paths = { "Goroshek.png", "Sun.png", "Kapusta.png", "Aktinia.png", "Bomba.png", "Pou.png" };
 		vector <coordinats> placeCards;
 		//Рисование карточки героев
 		for (int i = 0; i < 6; i++) {
@@ -418,7 +418,7 @@ int main()
 		//Перерисовать все пули
 		for (int i = 0; i < bulletIsRendering.size(); ++i) {
 			if (bulletIsRendering[i]) {
-				if ((listFlowers[i]->physic->health > 0) && (listFlowers[i]->image->currentPicture != "modelПодсолнух.png") && (listFlowers[i]->image->currentPicture != "modelПоу.png") && (listFlowers[i]->image->currentPicture != "modelБомба.png")) {
+				if ((listFlowers[i]->physic->health > 0) && (listFlowers[i]->image->currentPicture != "modelSun.png") && (listFlowers[i]->image->currentPicture != "modelPou.png") && (listFlowers[i]->image->currentPicture != "modelBomba.png")) {
 					listFlowers[i]->image->dx = 0.1;
 					listFlowers[i]->image->updateBullet(window, time);
 					}
@@ -520,47 +520,47 @@ int main()
 							coordinats temp;
 							temp.x = 296 + CageX * 92 - 20;
 							temp.y = 162 + CageY * 107 -20;
-							if (heroPath == "Капуста.png")
+							if (heroPath == "Kapusta.png")
 								temp.x -= 15;
 							heroToField(window, "model"+heroPath, temp);
 							pair<coordinats, string> tempPair(temp, "model" + heroPath);
 							FlowerPair* x;
-							if (heroPath == "Подсолнух.png") {
+							if (heroPath == "Sun.png") {
 								x = callObjectSunflower(play, sun_factory);
 								if (balance - 50 < 0) {
 									heroIsReadyToBeStandToFeld = false; break;
 								}
 								balance -= 50;
 							}
-							if (heroPath == "Капуста.png") {
+							if (heroPath == "Kapusta.png") {
 								x = callObjectCabbage(play, cab_factory);
 								if (balance - 100 < 0) {
 									heroIsReadyToBeStandToFeld = false; break;
 								}
 								balance -= 100;
 							}
-							if (heroPath == "Поу.png") {
+							if (heroPath == "Pou.png") {
 								x = callObjectNut(play, nut_factory);
 								if (balance - 50 < 0) {
 									heroIsReadyToBeStandToFeld = false; break;
 								}
 								balance -= 50;
 							}
-							if (heroPath == "Горошек.png") {
+							if (heroPath == "Goroshek.png") {
 								x = callObjectPea(play, pea_factory);
 								if (balance - 100 < 0) {
 									heroIsReadyToBeStandToFeld = false; break;
 								}
 								balance -= 100;
 							}
-							if (heroPath == "Бомба.png") {
+							if (heroPath == "Bomba.png") {
 								x = callObjectBomb(play, bomb_factory);
 								if (balance - 25 < 0) {
 									heroIsReadyToBeStandToFeld = false; break;
 								}
 								balance -= 25;
 							}
-							if (heroPath == "Актиния.png") {
+							if (heroPath == "Aktinia.png") {
 								x = callObjectActinia(play, act_factory);
 								if (balance - 175 < 0) {
 									heroIsReadyToBeStandToFeld = false; break;
@@ -582,8 +582,8 @@ int main()
 		//Покажем баланс на счету
 		//Рисовать от (600; 45)
 		string sumString = std::to_string(balance);
-		int startX = 600;
-		int startY = 45;
+		float startX = 600;
+		float startY = 45;
 		for (int i = 0; i < sumString.size(); ++i) {
 			string filename;
 			if (sumString[i] == '0') {
@@ -637,7 +637,7 @@ int main()
 			if (zombiesList[i].x < 195) {
 				//Рисование картинки поражения
 				Image mapLose;
-				mapLose.loadFromFile("Проигрыш.png");
+				mapLose.loadFromFile("Lose.png");
 				Texture map;
 				map.loadFromImage(mapLose);
 				Sprite loser;
@@ -659,7 +659,7 @@ int main()
 		if (i == zombiesList.size()) {
 			//Рисование картинки победы
 			Image mapWin;
-			mapWin.loadFromFile("Победа.jpg");
+			mapWin.loadFromFile("Win.jpg");
 			Texture map;
 			map.loadFromImage(mapWin);
 			Sprite winner;

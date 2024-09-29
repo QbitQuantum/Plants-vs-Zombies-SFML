@@ -33,14 +33,14 @@ public:
 //Обработка для Подсолнуха
 class SunflowerImage : public FlowerImage {
 	void setDoing() {
-		doing = "Кушать";
+		doing = "Eat";
 	}
 	void weaponFrom() {};
 	void setSpeedDx(double a) {
 		dx = a;
 	}
 	void setModel() {
-		currentPicture = "modelПодсолнух.png";
+		currentPicture = "modelSun.png";
 	}
 	void updateBullet(RenderWindow& window, double time) {};
 };
@@ -48,7 +48,7 @@ class SunflowerImage : public FlowerImage {
 //Обработка для Горошка
 class PeaImage : public FlowerImage {
 	void weaponFrom() {
-		weapon = "снарядГорошек.png";
+		weapon = "bulletGoroshek.png";
 		//Позиция вылета снаряда на картинке
 		posWeaponX = 100;
 		posWeaponY = 28;
@@ -59,17 +59,17 @@ class PeaImage : public FlowerImage {
 	}
 
 	void setDoing() {
-		doing = "Кушать";
+		doing = "Eat";
 	}
 	void setModel() {
-		currentPicture = "modelГорошек.png";
+		currentPicture = "modelGoroshek.png";
 	}
 	void updateBullet(RenderWindow& window, double time) {
 		posWeaponX += dx * time;
 		//Загрузка новой анимации
 
 		Image bulletRender;
-		bulletRender.loadFromFile("снарядГорошек.png");
+		bulletRender.loadFromFile("bulletGoroshek.png");
 		Texture texture;
 		texture.loadFromImage(bulletRender);
 		Sprite newSprite;
@@ -85,7 +85,7 @@ class PeaImage : public FlowerImage {
 //Обработка для Капусты
 class CabbageImage : public FlowerImage {
 	void weaponFrom() {
-		weapon = "снарядКапуста.png";
+		weapon = "bulletKapusta.png";
 		//Позиция вылета снаряда на картинке
 		posWeaponX = 13;
 		posWeaponY = 20;
@@ -94,17 +94,17 @@ class CabbageImage : public FlowerImage {
 		dx = speed;
 	}
 	void setDoing() {
-		doing = "Кушать";
+		doing = "Eat";
 	}
 	void setModel() {
-		currentPicture = "modelКапуста.png";
+		currentPicture = "modelKapusta.png";
 	}
 	void updateBullet(RenderWindow& window, double time) {
 		posWeaponX += dx * time;
 		//Загрузка новой анимации
 
 		Image bulletRender;
-		bulletRender.loadFromFile("снарядКапуста.png");
+		bulletRender.loadFromFile("bulletKapusta.png");
 		Texture texture;
 		texture.loadFromImage(bulletRender);
 		Sprite newSprite;
@@ -121,12 +121,12 @@ class CabbageImage : public FlowerImage {
 //Обработка для Ореха
 class NutImage : public FlowerImage {
 	void setDoing() {
-		doing = "Кушать";
+		doing = "Eat";
 	}
 	void weaponFrom() {};
 	void setSpeedDx(double a) {};
 	void setModel() {
-		currentPicture = "modelОрех.png";
+		currentPicture = "modelPou.png";
 	}
 	void updateBullet(RenderWindow& window, double time) {};
 };
@@ -134,7 +134,7 @@ class NutImage : public FlowerImage {
 //Обработка для Актинии
 class ActiniaImage : public FlowerImage {
 	void weaponFrom() {
-		weapon = "сюрикен1.png";
+		weapon = "shuriken1.png";
 		//Позиция вылета снаряда на картинке
 		posWeaponX = 103;
 		posWeaponY = 28;
@@ -144,10 +144,10 @@ class ActiniaImage : public FlowerImage {
 		//dx = speed;
 	}
 	void setDoing() {
-		doing = "Кушать";
+		doing = "Eat";
 	}
 	void setModel() {
-		currentPicture = "modelАктиния.png";
+		currentPicture = "modelActitnia.png";
 	}
 	void updateBullet(RenderWindow& window, double time) {
 		posWeaponX += dx * time;
@@ -155,9 +155,9 @@ class ActiniaImage : public FlowerImage {
 
 		Image bulletRender;
 		if (posWeaponX % 2 == 0)
-			bulletRender.loadFromFile("сюрикен1.png");
+			bulletRender.loadFromFile("shuriken1.png");
 		else
-			bulletRender.loadFromFile("сюрикен2.png");
+			bulletRender.loadFromFile("shuriken2.png");
 		Texture texture;
 		texture.loadFromImage(bulletRender);
 		Sprite newSprite;
@@ -174,12 +174,12 @@ class ActiniaImage : public FlowerImage {
 //Обработка для бомбы
 class BombImage : public FlowerImage {
 	void setDoing() {
-		doing = "Кушать";
+		doing = "Eat";
 	}
 	void weaponFrom() {};
 	void setSpeedDx(double a) {};
 	void setModel() {
-		currentPicture = "modelБомба.png";
+		currentPicture = "modelBomba.png";
 	}
 	void updateBullet(RenderWindow& window, double time) {};
 };
@@ -576,7 +576,7 @@ public:
 	void setNextPictureEating(RenderWindow& window) {
 		//Загрузка новой анимации
 		if (fileName.find("Ест") == -1)
-			fileName = "ЗомбиЕст.png";
+			fileName = "zombieEat.png";
 		else
 			fileName = "zombieOnPlace.png";
 
@@ -613,7 +613,7 @@ public:
 	Car(RenderWindow &window, int numberCar) {
 		Image car;
 		//загружаем файл для тачки
-		car.loadFromFile("modelТачка.png");
+		car.loadFromFile("modelLawnmower.png");
 		Texture texture;
 		texture.loadFromImage(car);
 		sprite.setTexture(texture);
@@ -634,7 +634,7 @@ public:
 
 		Image car;
 		//загружаем файл для тачки
-		car.loadFromFile("modelТачка.png");
+		car.loadFromFile("modelLawnmower.png");
 		Texture texture;
 		texture.loadFromImage(car);
 		sprite.setTexture(texture);
@@ -668,7 +668,7 @@ public:
 
 	void getDamage(Zombie* zombie) {
 		zombie->health -= 200;
-		if (zombie <= 0)
+		if (zombie->health <= 0)
 			zombie->ripZombie();
 	}
 
